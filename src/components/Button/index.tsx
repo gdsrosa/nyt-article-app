@@ -1,6 +1,7 @@
 import { MouseEvent } from 'react';
+import { StyledButton } from './styles';
 
-type ButtonProps = {
+export type ButtonProps = {
   label: string;
   type: 'button' | 'submit' | 'reset' | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -8,8 +9,8 @@ type ButtonProps = {
 
 export default function Button({ label, type, onClick }: ButtonProps) {
   return (
-    <button type={type} onClick={onClick}>
+    <StyledButton type={type} onClick={onClick}>
       {label}
-    </button>
+    </StyledButton>
   );
 }

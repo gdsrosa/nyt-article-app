@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { StyledInput } from './styles';
 
 type SearchBarProps = {
   input: string;
@@ -14,7 +15,7 @@ export default function SearchBar({
   placeholder,
 }: SearchBarProps) {
   return (
-    <input
+    <StyledInput
       type="search"
       name={name}
       defaultValue={input}

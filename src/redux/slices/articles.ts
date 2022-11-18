@@ -32,7 +32,6 @@ export const articleSlice = createSlice({
       state: ArticleState,
       action: PayloadAction<{ articles: any[]; page: number }>
     ) => {
-      console.log({ action });
       return {
         ...state,
         isLoading: false,

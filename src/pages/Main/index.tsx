@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import ArticleList from '../../components/ArticlesList';
 import Button from '../../components/Button';
 import ErrorMessage from '../../components/ErrorMessage';
+import Footer from '../../components/Footer';
 import SearchBar from '../../components/SearchBar';
 
 import { useAppDispatch } from '../../hooks/useAppDispatch';
@@ -9,7 +10,7 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { handleFetchArticles } from '../../redux/slices/articles';
 
 import { RootState } from '../../redux/types';
-import { Wrapper } from './styles';
+import { Paginator, Section, Wrapper } from './styles';
 
 // TODO: add styling - WIP
 // TODO: add unit tests
@@ -52,33 +53,41 @@ export default function Main() {
 
   return (
     <Wrapper>
-      <h1>Grover NYT Article Search App</h1>
-      <form onSubmit={handleSubmit}>
-        <SearchBar
-          input={searchInput}
-          handleChange={handleChange}
-          name="article"
-          placeholder="Search article..."
-        />
-        <Button label="Search" type="submit" />
-      </form>
+      <Section>
+        <h1>NYT Article Search</h1>
 
-      {articles && (
-        <>
-          <ArticleList />
+        <form onSubmit={handleSubmit}>
+          <SearchBar
+            input={searchInput}
+            handleChange={handleChange}
+            name="article"
+            placeholder="Search article..."
+          />
+          <Button label="Search" type="submit" />
+        </form>
 
-          <div>
-            {page !== 0 && (
-              <Button type="button" onClick={handlePrevPage} label="Previous" />
-            )}
-            {hasArticles && (
-              <Button type="button" onClick={handleNextPage} label="Next" />
-            )}
-          </div>
-        </>
-      )}
-      {isLoading && <h1>Loading...</h1>}
-      {error && <ErrorMessage error={error} />}
+        {articles && (
+          <>
+            <ArticleList />
+
+            <Paginator>
+              {page !== 0 && (
+                <Button
+                  type="button"
+                  onClick={handlePrevPage}
+                  label="Previous"
+                />
+              )}
+              {hasArticles && (
+                <Button type="button" onClick={handleNextPage} label="Next" />
+              )}
+            </Paginator>
+          </>
+        )}
+        {isLoading && <h1>Loading...</h1>}
+        {error && <ErrorMessage error={error} />}
+      </Section>
+      <Footer />
     </Wrapper>
   );
 }
