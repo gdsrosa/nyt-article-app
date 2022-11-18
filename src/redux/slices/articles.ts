@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import api from '../../api';
-import { AppDispatch } from '../types';
-import { AxiosError, AxiosResponse } from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import api from "../../api";
+import { AppDispatch } from "../types";
+import { AxiosError, AxiosResponse } from "axios";
 
 export interface ArticleState {
   articles: any[];
@@ -19,7 +19,7 @@ const initialState: ArticleState = {
 };
 
 export const articleSlice = createSlice({
-  name: 'article',
+  name: "article",
   initialState,
   reducers: {
     fetchArticles: (state: ArticleState, action: PayloadAction) => {

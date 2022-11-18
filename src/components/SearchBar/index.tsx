@@ -1,5 +1,5 @@
-import { ChangeEvent } from 'react';
-import { StyledInput } from './styles';
+import { ChangeEvent } from "react";
+import { StyledInput } from "./styles";
 
 type SearchBarProps = {
   input: string;

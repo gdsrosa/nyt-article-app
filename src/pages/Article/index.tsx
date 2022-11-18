@@ -1,10 +1,10 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { RootState } from '../../redux/types';
-import { formatDate, slugify } from '../../utils';
-import { Main, Wrapper } from './styles';
-import Footer from '../../components/Footer';
+import { RootState } from "../../redux/types";
+import { formatDate, slugify } from "../../utils";
+import { Main, Wrapper } from "./styles";
+import Footer from "../../components/Footer";
 
 export default function Article() {
   const navigate = useNavigate();

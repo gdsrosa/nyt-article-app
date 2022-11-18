@@ -1,14 +1,14 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Article from '../pages/Article';
-import Main from '../pages/Main';
+import { createBrowserRouter } from "react-router-dom";
+import Article from "../pages/Article";
+import Main from "../pages/Main";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main />,
   },
   {
-    path: 'articles/:article',
+    path: "articles/:article",
     element: <Article />,
   },
 ]);

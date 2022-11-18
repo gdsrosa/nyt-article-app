@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { RootState } from '../../redux/types';
-import { slugify } from '../../utils';
-import { StyledUl, SubTitle } from './styles';
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { RootState } from "../../redux/types";
+import { slugify } from "../../utils";
+import { StyledUl, SubTitle } from "./styles";
 
 export default function ArticleList() {
   const { articles } = useAppSelector((state: RootState) => state.articles);

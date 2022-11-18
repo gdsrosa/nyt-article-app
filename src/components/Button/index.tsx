@@ -1,9 +1,9 @@
-import { MouseEvent } from 'react';
-import { StyledButton } from './styles';
+import { MouseEvent } from "react";
+import { StyledButton } from "./styles";
 
 export type ButtonProps = {
   label: string;
-  type: 'button' | 'submit' | 'reset' | undefined;
+  type: "button" | "submit" | "reset" | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 

@@ -1,31 +1,29 @@
-import { ChangeEvent, useState } from 'react';
-import ArticleList from '../../components/ArticlesList';
-import Button from '../../components/Button';
-import ErrorMessage from '../../components/ErrorMessage';
-import Footer from '../../components/Footer';
-import SearchBar from '../../components/SearchBar';
+import { ChangeEvent, useState } from "react";
+import ArticleList from "../../components/ArticlesList";
+import Button from "../../components/Button";
+import ErrorMessage from "../../components/ErrorMessage";
+import Footer from "../../components/Footer";
+import SearchBar from "../../components/SearchBar";
 
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
-import { handleFetchArticles } from '../../redux/slices/articles';
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { handleFetchArticles } from "../../redux/slices/articles";
 
-import { RootState } from '../../redux/types';
-import { Paginator, Section, Wrapper } from './styles';
+import { RootState } from "../../redux/types";
+import { Paginator, Section, Wrapper } from "./styles";
 
-// TODO: add styling - WIP
 // TODO: add unit tests
-// TODO: check if all criterias from challenge were tackled
 
 export default function Main() {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   const dispatch = useAppDispatch();
   const { articles, isLoading, page, error } = useAppSelector(
     (state: RootState) => ({
-      articles: state.articles.articles,
-      isLoading: state.articles.isLoading,
-      page: state.articles.currentPage,
-      error: state.articles.error,
+      articles: state.articles?.articles,
+      isLoading: state.articles?.isLoading,
+      page: state.articles?.currentPage,
+      error: state.articles?.error,
     })
   );
   const hasArticles = articles.length > 0;
@@ -68,7 +66,7 @@ export default function Main() {
 
         {articles && (
           <>
-            <ArticleList />
+            <ArticleList data-testid="articleList" />
 
             <Paginator>
               {page !== 0 && (
@@ -84,7 +82,7 @@ export default function Main() {
             </Paginator>
           </>
         )}
-        {isLoading && <h1>Loading...</h1>}
+        {isLoading && <h2>Loading...</h2>}
         {error && <ErrorMessage error={error} />}
       </Section>
       <Footer />
