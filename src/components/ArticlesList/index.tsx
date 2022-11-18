@@ -12,7 +12,7 @@ export default function ArticleList() {
       {articles.length > 0 && <SubTitle>Results</SubTitle>}
       <StyledUl>
         {articles.map((article: any) => (
-          <li key={article._id}>
+          <li data-testid="articleItem" key={article._id}>
             <Link to={`/articles/${slugify(article.headline.main)}`}>
               {article.headline.main}
             </Link>

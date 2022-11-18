@@ -12,8 +12,6 @@ import { handleFetchArticles } from "../../redux/slices/articles";
 import { RootState } from "../../redux/types";
 import { Paginator, Section, Wrapper } from "./styles";
 
-// TODO: add unit tests
-
 export default function Main() {
   const [searchInput, setSearchInput] = useState("");
 
@@ -66,7 +64,7 @@ export default function Main() {
 
         {articles && (
           <>
-            <ArticleList data-testid="articleList" />
+            <ArticleList />
 
             <Paginator>
               {page !== 0 && (

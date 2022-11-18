@@ -10,7 +10,7 @@ export default function ErrorMessage({ error }: ErrorMessageProps) {
   return (
     <div>
       <h2>Oh, no!</h2>
-      <p>
+      <p data-testid="errorMessage">
         Unable to process your request:{" "}
         <strong>{error.data?.fault.faultstring}</strong>{" "}
       </p>

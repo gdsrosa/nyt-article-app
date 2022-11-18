@@ -1,8 +1,14 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { rest } from "msw";
 
 import App from "../App";
+import { server } from "../mocks/server";
 import { renderWithContext } from "../test-utils";
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 describe("App", () => {
   it("should render App without crash", () => {
@@ -12,15 +18,14 @@ describe("App", () => {
     expect(title).toBeInTheDocument();
   });
 
-  fit("should search for articles", async () => {
+  it("should search for articles", async () => {
     renderWithContext(<App />);
-    // change on input
+
     const input = screen.getByPlaceholderText("Search article...");
     expect(input).toBeInTheDocument();
 
     await userEvent.type(input, "brazil");
 
-    // click to make search
     const searchButton = screen.getByText("Search");
     expect(searchButton).toBeInTheDocument();
 
@@ -29,9 +34,13 @@ describe("App", () => {
     const loadingText = screen.getByText("Loading...");
     expect(loadingText).toBeInTheDocument();
 
-    // assert if we got 10 articles as results
     await waitFor(() => {
-      expect(screen.getByTestId("articleList")).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          "What Does an F1 Race in Brazil Lack? A Brazilian Driver."
+        )
+      ).toBeInTheDocument();
     });
+    expect(screen.getAllByTestId("articleItem")).toHaveLength(10);
   });
 });
